@@ -7,9 +7,6 @@ export class AppService {
   }
 
   getExemplo() {
-    return {mensagem:'Deus é fiel' }
+    return { mensagem: 'Deus é fiel' };
   }
-
-
-
 }

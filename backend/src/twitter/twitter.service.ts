@@ -6,10 +6,17 @@ export class TwitterService {
     return 'Hello World!';
   }
 
-  getExemplo() {
-    return {mensagem:'Deus é fiel' }
+  async getTweet(T: any) {
+    const response = await T.get(
+      'search/tweets',
+      { q: 'covid19', count: 1000 },
+      async function (err, data, response) {
+        data.statuses.map((twitter) => {
+          return twitter.text;
+        });
+      },
+    );
+
+    return response;
   }
-
-
-
 }
