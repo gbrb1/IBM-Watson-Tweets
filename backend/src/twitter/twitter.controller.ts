@@ -19,7 +19,10 @@ export class TwitterController {
 
   @Get()
   async getTwitter() {
-    const data = await this.twitterClient.tweets.search({q: 'covid19'});
+    const data = await this.twitterClient.tweets.search({
+      q: 'covid19',
+      count: 50,
+    });
     return data;
   }
 }
