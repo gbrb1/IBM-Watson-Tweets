@@ -3,10 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TwitterModule } from './twitter/twitter.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(),
-    TwitterModule
-  ],
+  imports: [TypeOrmModule.forRoot(), TwitterModule],
   controllers: [],
   providers: [],
 })

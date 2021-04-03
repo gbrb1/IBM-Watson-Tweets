@@ -7,13 +7,11 @@ import { TwitterService } from './twitter.service';
 @Controller('Twitter')
 @ApiTags('Twitter')
 export class TwitterController {
-
   //Declarando objeto da lib TwitterClient para fazer as requisiçoes a api do Twitter
   private twitterClient: TwitterClient;
 
   constructor(private readonly twitterService: TwitterService) {
-   
-    // Instanciando objeto com todas as chaves da api 
+    // Instanciando objeto com todas as chaves da api
     this.twitterClient = new TwitterClient({
       apiKey: process.env.API_KEY_TWITTER,
       apiSecret: process.env.API_KEY_SECRET_TWITTER,
@@ -23,27 +21,29 @@ export class TwitterController {
   }
 
   //endpoint pegar tweets da api do twitter
-  @Get("/tweets")
-  @ApiOperation({ summary: 'Retornar Json com principais dados do Tweet' })
+  @Get('/tweets')
+  @ApiOperation({ summary: 'Retornar Json com principais dados do Tweet + Armazenar no Banco Tweet encontrados' })
   async getTwitter() {
-    
-    //constante data com resposta da api  
+    //constante data com resposta da api
     const data = await this.twitterClient.tweets.search({
       q: '#covid19' + '-filter:retweets',
-      lang:"pt",
+      lang: 'pt',
       count: 100,
     });
 
     //map para criar um array com elementos que contenham apenas campos necessarios
-    const response = data.statuses.map(tweet=>{
+    const response = data.statuses.map((tweet) => {
       return {
-        id : tweet.id,
+        id: tweet.id,
         userName: tweet.user.name,
-        text:tweet.text
-      }
-    })
+        text: tweet.text,
+      };
+    });
 
-    //retorna dados e total
-    return {dados:response, total:response.length}  
+    //Armazendo Tweets no banco de dados
+    await this.twitterService.saveTweets(response);
+
+    //retornando dados e total
+    return { dados: response, total: response.length };
   }
 }
