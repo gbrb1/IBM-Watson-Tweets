@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { text } from 'express';
 import { TwitterClient } from 'twitter-api-client';
 import { TwitterService } from './twitter.service';
 
@@ -20,9 +21,19 @@ export class TwitterController {
   @Get()
   async getTwitter() {
     const data = await this.twitterClient.tweets.search({
-      q: 'covid19',
-      count: 50,
+      q: '#covid19' + '-filter:retweets',
+      lang:"pt",
+      count: 100,
     });
-    return data;
+
+    const response = data.statuses.map(tweet=>{
+      return {
+        id : tweet.id,
+        userName: tweet.user.name,
+        text:tweet.text
+      }
+    })
+
+    return {dados:response, total:response.length}  
   }
 }
