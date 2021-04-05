@@ -1,3 +1,5 @@
+//Definindo objeto tweet
+
 interface Tweet {
   id: number;
   userName: string;

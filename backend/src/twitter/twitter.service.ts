@@ -9,16 +9,19 @@ export class TwitterService {
     @InjectRepository(TweetEntity)
     private tweetRespository: Repository<TweetEntity>,
   ) {}
-
+  //Função para salvar tweets no banco
   async saveTweets(tweets: Tweet[]) {
+    //Esperando todos os tweets serem salvos no banco
     await Promise.all(
+      //Percorrendo e salvando os tweets
       tweets.map(async (tweet) => {
+        //Criando um registro na tabela tweet
         const insert = new TweetEntity({
           idTweet: tweet.id,
           userName: tweet.userName,
           text: tweet.text,
         });
-
+        //Salvando no banco
         await this.tweetRespository.save(insert);
       }),
     );

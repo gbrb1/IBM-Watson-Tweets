@@ -1,8 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { text } from 'express';
 import { TwitterClient } from 'twitter-api-client';
 import { TwitterService } from './twitter.service';
+
+//Definindo os endpoints dos serviços do twitter
 
 @Controller('Twitter')
 @ApiTags('Twitter')
@@ -22,7 +23,10 @@ export class TwitterController {
 
   //endpoint pegar tweets da api do twitter
   @Get('/tweets')
-  @ApiOperation({ summary: 'Retornar Json com principais dados do Tweet + Armazenar no Banco Tweet encontrados' })
+  @ApiOperation({
+    summary:
+      'Retornar Json com principais dados do Tweet + Armazenar no Banco Tweet encontrados',
+  })
   async getTwitter() {
     //constante data com resposta da api
     const data = await this.twitterClient.tweets.search({
@@ -43,7 +47,7 @@ export class TwitterController {
     //Armazendo Tweets no banco de dados
     await this.twitterService.saveTweets(response);
 
-    //retornando dados e total
+    //Retornando dados e total
     return { dados: response, total: response.length };
   }
 }
