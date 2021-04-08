@@ -3,7 +3,7 @@ import { WatsonController } from './watson.controller';
 import { WatsonService } from './watson.service';
 
 @Module({
-  imports: [WatsonModule],
+  imports: [],
   controllers: [WatsonController],
   providers: [WatsonService],
 })

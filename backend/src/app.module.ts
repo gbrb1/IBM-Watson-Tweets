@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TwitterModule } from './twitter/twitter.module';
-import { WatsonModule } from './Watson/watson.module';
+import { WatsonModule } from './watson/watson.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot(), TwitterModule, WatsonModule],
