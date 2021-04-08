@@ -11,7 +11,7 @@ export class TwitterService {
   ) {}
   //Função para salvar tweets no banco
   async saveTweets(tweets: Tweet[]) {
-    //Esperando todos os tweets serem salvos no banco
+    //Esperando todos os tweets serem salvos
     await Promise.all(
       //Percorrendo e salvando os tweets
       tweets.map(async (tweet) => {

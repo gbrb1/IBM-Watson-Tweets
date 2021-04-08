@@ -21,21 +21,21 @@ export class TwitterController {
     });
   }
 
-  //endpoint pegar tweets da api do twitter
+  //Endpoint pegar tweets da api do twitter
   @Get('/tweets')
   @ApiOperation({
     summary:
       'Retornar Json com principais dados do Tweet + Armazenar no Banco Tweet encontrados',
   })
   async getTwitter() {
-    //constante data com resposta da api
+    //Constante data com resposta da api
     const data = await this.twitterClient.tweets.search({
       q: '#covid19' + '-filter:retweets',
       lang: 'pt',
       count: 100,
     });
 
-    //map para criar um array com elementos que contenham apenas campos necessarios
+    //Map para criar um array com elementos que contenham apenas campos desejados
     const response = data.statuses.map((tweet) => {
       return {
         id: tweet.id,
