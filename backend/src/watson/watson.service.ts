@@ -1,15 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class AppService {
+export class WatsonService {
   getHello(): string {
     return 'Hello World!';
   }
-
-  getExemplo() {
-    return {mensagem:'Deus é fiel' }
-  }
-
-
-
 }
