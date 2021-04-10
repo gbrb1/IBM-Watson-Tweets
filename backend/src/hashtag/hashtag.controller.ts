@@ -13,7 +13,7 @@ export class HashtagController{
 
     }
 
-    @Get()
+    @Get('/hashtag')
     ShowAllHashtags(){
         return this.hashtagService.ShowAll();
     }
