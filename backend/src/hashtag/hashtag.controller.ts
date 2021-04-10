@@ -18,13 +18,18 @@ export class HashtagController {
 
   @Get()
   async ShowAllHashtags() {
-    return await this.hashtagService.ShowAll();
+    try {
+      return await this.hashtagService.ShowAll();
+    } catch (e) {
+      return e;
+    }
   }
 
   @Post()
   async createHashtag(@Body() data: HashtagDTO) {
     try {
-      return await this.hashtagService.create(data);
+      await this.hashtagService.create(data);
+      return { mensagem: 'Hashtag cadastrada com sucesso!' };
     } catch (e) {
       return e;
     }
@@ -32,7 +37,11 @@ export class HashtagController {
 
   @Get(':id')
   async readHashtag(@Param('id') id: string) {
-    return await this.hashtagService.read(id);
+    try {
+      return await this.hashtagService.read(id);
+    } catch (e) {
+      return e;
+    }
   }
 
   @Put(':id')
@@ -40,11 +49,19 @@ export class HashtagController {
     @Param('id') id: string,
     @Body() data: Partial<HashtagDTO>,
   ) {
-    return await this.hashtagService.update(id, data);
+    try {
+      return await this.hashtagService.update(id, data);
+    } catch (e) {
+      return e;
+    }
   }
 
   @Delete(':id')
   async destroyHashtag(@Param('id') id: string) {
-    return await this.hashtagService.destroy(id);
+    try {
+      return await this.hashtagService.destroy(id);
+    } catch (e) {
+      return e;
+    }
   }
 }

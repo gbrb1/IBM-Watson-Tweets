@@ -17,30 +17,34 @@ export class WatsonController {
     @Param('url') urlMensagem: string,
     @Res() response: Response,
   ) {
-    const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+    try {
+      const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
 
-    const assistant = new NaturalLanguageUnderstandingV1({
-      authenticator: new IamAuthenticator({
-        apikey: process.env.API_KEY_WATSON,
-      }),
-      version: '2018-04-05',
-      serviceUrl:
-        'https://gateway.watsonplatform.net/natural-language-understanding/api',
-    });
-
-    assistant
-      .analyze({
-        html: urlMensagem,
-        features: {
-          concepts: {},
-          keywords: {},
-        },
-      })
-      .then((res) => {
-        response.json(res.result);
-      })
-      .catch((err) => {
-        response.json(err);
+      const assistant = new NaturalLanguageUnderstandingV1({
+        authenticator: new IamAuthenticator({
+          apikey: process.env.API_KEY_WATSON,
+        }),
+        version: '2018-04-05',
+        serviceUrl:
+          'https://gateway.watsonplatform.net/natural-language-understanding/api',
       });
+
+      assistant
+        .analyze({
+          html: urlMensagem,
+          features: {
+            concepts: {},
+            keywords: {},
+          },
+        })
+        .then((res) => {
+          response.json(res.result);
+        })
+        .catch((err) => {
+          response.json(err);
+        });
+    } catch (e) {
+      return e;
+    }
   }
 }
