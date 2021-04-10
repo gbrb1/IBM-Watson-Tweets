@@ -19,8 +19,8 @@ export class HashtagEntity {
   @Column('text')
   @ApiResponseProperty()
   descricao: string;
-  
-  @Column({type: 'date'})
+
+  @CreateDateColumn()
   @ApiResponseProperty()
   criadoEm: string;
 

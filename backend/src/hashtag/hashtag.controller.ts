@@ -1,44 +1,50 @@
-import { Controller, Delete, Get, Post, Put, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Body,
+  Param,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { HashtagService } from './hashtag.service';
 import { HashtagDTO } from './hashtag.dto';
 
 @Controller('Hashtag')
 @ApiTags('Hashtag')
+export class HashtagController {
+  constructor(private hashtagService: HashtagService) {}
 
+  @Get()
+  async ShowAllHashtags() {
+    return await this.hashtagService.ShowAll();
+  }
 
-export class HashtagController{
-    
-    constructor(private hashtagService: HashtagService){
-
+  @Post()
+  async createHashtag(@Body() data: HashtagDTO) {
+    try {
+      return await this.hashtagService.create(data);
+    } catch (e) {
+      return e;
     }
+  }
 
-    @Get('/hashtag')
-    ShowAllHashtags(){
-        return this.hashtagService.ShowAll();
-    }
+  @Get(':id')
+  async readHashtag(@Param('id') id: string) {
+    return await this.hashtagService.read(id);
+  }
 
-    @Post()
-    createHashtag(@Body() data: HashtagDTO){
-        return this.hashtagService.create(data);
-    }
+  @Put(':id')
+  async updateHashtag(
+    @Param('id') id: string,
+    @Body() data: Partial<HashtagDTO>,
+  ) {
+    return await this.hashtagService.update(id, data);
+  }
 
-    @Get(':id')
-    readHashtag(@Param('id') id: string){
-        return this.hashtagService.read(id);
-    }
-
-    @Put(':id')
-    updateHashtag(@Param('id') id: string, @Body() data: Partial<HashtagDTO>){
-        return this.hashtagService.update(id, data);
-    }
-
-    @Delete(':id')
-    destroyHashtag(@Param('id') id: string){
-        return this.hashtagService.destroy(id);
-    }
-   
-
-
+  @Delete(':id')
+  async destroyHashtag(@Param('id') id: string) {
+    return await this.hashtagService.destroy(id);
+  }
 }
-

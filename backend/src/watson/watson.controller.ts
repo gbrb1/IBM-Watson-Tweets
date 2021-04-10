@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Res} from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { IamAuthenticator } from 'ibm-watson/auth';
 import { WatsonService } from './watson.service';
@@ -18,10 +18,10 @@ export class WatsonController {
     @Res() response: Response,
   ) {
     const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
-    
+
     const assistant = new NaturalLanguageUnderstandingV1({
       authenticator: new IamAuthenticator({
-        apikey: process.env.API_KEY_WATSON 
+        apikey: process.env.API_KEY_WATSON,
       }),
       version: '2018-04-05',
       serviceUrl:
