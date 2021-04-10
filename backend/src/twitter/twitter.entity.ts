@@ -24,6 +24,10 @@ export class TweetEntity {
   @ApiResponseProperty()
   text: string;
 
+  @Column('text')
+  @ApiResponseProperty()
+  hashtag: string;
+
   @CreateDateColumn()
   created: Date;
 

@@ -35,31 +35,33 @@ export class HashtagController {
     }
   }
 
-  @Get(':id')
-  async readHashtag(@Param('id') id: string) {
+  @Get(':hashtag')
+  async readHashtag(@Param('hashtag') hashtag: string) {
     try {
-      return await this.hashtagService.read(id);
+      return await this.hashtagService.read(hashtag);
     } catch (e) {
       return e;
     }
   }
 
-  @Put(':id')
+  @Put(':hashtag')
   async updateHashtag(
-    @Param('id') id: string,
+    @Param('hashtag') hashtag: string,
     @Body() data: Partial<HashtagDTO>,
   ) {
     try {
-      return await this.hashtagService.update(id, data);
+      await this.hashtagService.update(hashtag, data);
+      return { mensagem: 'Hashtag editada com sucesso!' };
     } catch (e) {
       return e;
     }
   }
 
-  @Delete(':id')
-  async destroyHashtag(@Param('id') id: string) {
+  @Delete(':hashtag')
+  async destroyHashtag(@Param('hashtag') hashtag: string) {
     try {
-      return await this.hashtagService.destroy(id);
+      await this.hashtagService.destroy(hashtag);
+      return { mensagem: 'Hashtag deletada com sucesso!' };
     } catch (e) {
       return e;
     }

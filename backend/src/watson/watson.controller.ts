@@ -1,20 +1,21 @@
 import { Controller, Get, Param, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { IamAuthenticator } from 'ibm-watson/auth';
-import { WatsonService } from './watson.service';
 import { Response } from 'express';
+import { TwitterService } from '../twitter/twitter.service';
+
 
 @Controller('Watson')
 @ApiTags('Watson')
 export class WatsonController {
-  constructor(private readonly watsonService: WatsonService) {}
+  constructor(private readonly twitterService: TwitterService) {}
 
-  @Get('/Analise/:url')
+  @Get('/Analise/:hashtag')
   @ApiOperation({
     summary: 'Inserir texto no parametro "url" e Pegar resposta dowatson',
   })
   async getResponseWatson(
-    @Param('url') urlMensagem: string,
+    @Param('hashtag') hashtag: string,
     @Res() response: Response,
   ) {
     try {
@@ -29,9 +30,12 @@ export class WatsonController {
           'https://gateway.watsonplatform.net/natural-language-understanding/api',
       });
 
+    
+    //  const tweets = await this.twitterService.getTweets(hashtag)
+      
       assistant
         .analyze({
-          html: urlMensagem,
+          html: 'urlMensagem',
           features: {
             concepts: {},
             keywords: {},

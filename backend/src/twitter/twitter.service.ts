@@ -10,7 +10,7 @@ export class TwitterService {
     private tweetRespository: Repository<TweetEntity>,
   ) {}
   //Função para salvar tweets no banco
-  async saveTweets(tweets: Tweet[]) {
+  async saveTweets(tweets: Tweet[], hashtag: string) {
     //Esperando todos os tweets serem salvos
     await Promise.all(
       //Percorrendo e salvando os tweets
@@ -20,10 +20,20 @@ export class TwitterService {
           idTweet: tweet.id,
           userName: tweet.userName,
           text: tweet.text,
+          hashtag: hashtag
         });
         //Salvando no banco
         await this.tweetRespository.save(insert);
       }),
     );
   }
+ 
+ 
+  async getTweets(hashtag: string) {
+    const dados = await this.tweetRespository.find({ where: { hashtag: hashtag } })
+
+    return { dados: dados, total: dados.length };
+  }
+
+
 }

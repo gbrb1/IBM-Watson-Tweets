@@ -12,7 +12,9 @@ export class HashtagService {
   ) {}
 
   async ShowAll() {
-    return await this.hashtagRepository.find();
+    const dados = await this.hashtagRepository.find();
+
+    return { dados: dados, total: dados.length };
   }
 
   async create(data: HashtagDTO) {
@@ -27,17 +29,17 @@ export class HashtagService {
     return hashtag;
   }
 
-  async read(id: string) {
-    return await this.hashtagRepository.findOne({ where: { id } });
+  async read(hashtag: string) {
+    return await this.hashtagRepository.findOne({ where: { nome: hashtag } });
   }
 
-  async update(id: string, data: Partial<HashtagDTO>) {
-    await this.hashtagRepository.update({ id }, data);
-    return await this.hashtagRepository.findOne({ id });
+  async update(hashtag: string, data: Partial<HashtagDTO>) {
+    await this.hashtagRepository.update({ nome: hashtag }, data);
+    return await this.hashtagRepository.findOne({ nome: hashtag });
   }
 
-  async destroy(id: string) {
-    await this.hashtagRepository.delete({ id });
+  async destroy(hashtag: string) {
+    await this.hashtagRepository.delete({ nome: hashtag });
     return { deleted: true };
   }
 }

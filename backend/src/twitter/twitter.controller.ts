@@ -27,11 +27,11 @@ export class TwitterController {
     summary:
       'Retornar Json com principais dados do Tweet + Armazenar no Banco Tweet encontrados',
   })
-  async getTwitter(@Param('tweet') tweet: string) {
+  async getTwitter(@Param('tweet') parametro: string) {
     try {
       //Constante data com resposta da api
       const data = await this.twitterClient.tweets.search({
-        q: '#' + tweet + '-filter:retweets',
+        q: '#' + parametro + '-filter:retweets',
         lang: 'pt',
         count: 100,
       });
@@ -46,7 +46,7 @@ export class TwitterController {
       });
 
       //Armazendo Tweets no banco de dados
-      await this.twitterService.saveTweets(response);
+      await this.twitterService.saveTweets(response, parametro);
 
       //Retornando dados e total
       return { dados: response, total: response.length };
