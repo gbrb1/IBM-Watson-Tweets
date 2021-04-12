@@ -35,8 +35,7 @@ export class WatsonController {
     
      
      if (tweets.length <= 0) {
-      console.log(tweets.length)
-      throw new NotFoundException('Nenhum tweet encontrado');
+        response.sendStatus(404).send("Nenhum tweet encontrado")
      }
       
      const texto = tweets.map(tweet =>{
