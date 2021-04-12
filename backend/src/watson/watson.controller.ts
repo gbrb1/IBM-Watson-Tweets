@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Res } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Param, Res } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { IamAuthenticator } from 'ibm-watson/auth';
 import { Response } from 'express';
@@ -31,11 +31,19 @@ export class WatsonController {
       });
 
     
-    //  const tweets = await this.twitterService.getTweets(hashtag)
+     const tweets = await this.twitterService.getTweets(hashtag)
+
+     if(tweets.total <= 0){
+      throw new BadRequestException('Nenhum tweet encontrado.')
+     }
       
+     const texto = tweets.dados.map(tweet =>{
+       return tweet.text;
+     })
+
       assistant
         .analyze({
-          html: 'urlMensagem',
+          html: texto.join(),
           features: {
             concepts: {},
             keywords: {},
