@@ -29,10 +29,8 @@ export class TwitterService {
   }
  
  
-  async getTweets(hashtag: string) {
-    const dados = await this.tweetRespository.find({ where: { hashtag: hashtag } })
-
-    return { dados: dados, total: dados.length };
+  async getTweets(hashtag: string): Promise <TweetEntity[]> {
+   return await this.tweetRespository.find({ where: { hashtag: hashtag } })
   }
 
 
