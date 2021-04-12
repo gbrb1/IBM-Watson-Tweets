@@ -39,7 +39,6 @@ export class HashtagService {
   }
 
   async destroy(hashtag: string) {
-    await this.hashtagRepository.delete({ nome: hashtag });
-    return { deleted: true };
+    return await this.hashtagRepository.delete({ nome: hashtag });
   }
 }

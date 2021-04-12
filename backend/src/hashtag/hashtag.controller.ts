@@ -6,10 +6,12 @@ import {
   Put,
   Body,
   Param,
+  NotFoundException,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { HashtagService } from './hashtag.service';
 import { HashtagDTO } from './hashtag.dto';
+import { response } from 'express';
 
 @Controller('Hashtag')
 @ApiTags('Hashtag')
@@ -38,7 +40,13 @@ export class HashtagController {
   @Get(':hashtag')
   async readHashtag(@Param('hashtag') hashtag: string) {
     try {
-      return await this.hashtagService.read(hashtag);
+      const response = await this.hashtagService.read(hashtag)
+      if (!response){
+        throw new NotFoundException('Hashtag não encontrada.')
+      }
+
+      return response
+
     } catch (e) {
       return e;
     }
@@ -47,7 +55,7 @@ export class HashtagController {
   @Put(':hashtag')
   async updateHashtag(
     @Param('hashtag') hashtag: string,
-    @Body() data: Partial<HashtagDTO>,
+    @Body() data: HashtagDTO,
   ) {
     try {
       await this.hashtagService.update(hashtag, data);
@@ -60,8 +68,12 @@ export class HashtagController {
   @Delete(':hashtag')
   async destroyHashtag(@Param('hashtag') hashtag: string) {
     try {
+      const getHashtag = await this.hashtagService.read(hashtag)
+      if(!getHashtag){
+        throw new NotFoundException('Hashtag não encontrada.')
+      }
       await this.hashtagService.destroy(hashtag);
-      return { mensagem: 'Hashtag deletada com sucesso!' };
+      return {mensagem:'sucesso ao deletar hashtag'}
     } catch (e) {
       return e;
     }

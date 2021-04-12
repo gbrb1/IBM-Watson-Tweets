@@ -10,7 +10,7 @@ export class TwitterService {
     private tweetRespository: Repository<TweetEntity>,
   ) {}
   //Função para salvar tweets no banco
-  async saveTweets(tweets: Tweet[], hashtag: string) {
+  async saveTweets(tweets: any, hashtag: string) {
     //Esperando todos os tweets serem salvos
     await Promise.all(
       //Percorrendo e salvando os tweets
