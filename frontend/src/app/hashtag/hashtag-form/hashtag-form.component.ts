@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./hashtag-form.component.css']
 })
 export class HashtagFormComponent implements OnInit {
-  hastag: Hashtag = new Hashtag();
+  hashtag: Hashtag = new Hashtag();
   title: string = 'Nova Hashtag';
   
   constructor(
@@ -21,16 +21,16 @@ export class HashtagFormComponent implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.hashtagService.getById(id).subscribe(hastag => {
-        this.hastag = hastag;
-        this.title = 'Alterando hastag';
+      this.hashtagService.getById(id).subscribe(hashtag => {
+        this.hashtag = hashtag;
+        this.title = 'Alterando hashtag';
       });
     }
   }
 
   onSubmit() {
-    this.hashtagService.save(this.hastag).subscribe(hastag => {
-      console.log(hastag);
+    this.hashtagService.save(this.hashtag).subscribe(hashtag => {
+      console.log(hashtag);
       this.router.navigate(['']);
     });
   }

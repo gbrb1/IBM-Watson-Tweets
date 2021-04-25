@@ -19,15 +19,15 @@ export class HashtagListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  remove(hastag: Hashtag) {
-    this.hashtagService.delete(hastag.id).subscribe(() => {
-      this.onDeleteHashtag.emit(hastag);
+  remove(hashtag: Hashtag) {
+    this.hashtagService.delete(hashtag.id).subscribe(() => {
+      this.onDeleteHashtag.emit(hashtag);
     });
   }
 
-  onCompletedCheckChange(hastag: Hashtag) {
-    this.hashtagService.save(hastag).subscribe(hastag => {
-      console.log(hastag);
+  onCompletedCheckChange(hashtag: Hashtag) {
+    this.hashtagService.save(hashtag).subscribe(hashtag => {
+      console.log(hashtag);
     });
   }
 }

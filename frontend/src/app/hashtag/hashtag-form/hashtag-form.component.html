@@ -4,8 +4,10 @@
 <section id="form">
     <form (ngSubmit)="onSubmit()" #formHashtag="ngForm">
         <div class="form-group">
+            <label>Insira a Hashtag</label>
+            <input type="text" [(ngModel)]="hashtag.nome" name="Nome" class="form-control">
             <label>Descrição</label>
-            <textarea [(ngModel)]="hastag.nome" name="Nome" rows="5" class="form-control"></textarea>
+            <input type="text" [(ngModel)]="hashtag.descricao" name="Descricao" rows="Nome"  class="form-control">
         </div>
         <button type="submit" class="btn btn-primary mr-2">Salvar</button>
         <button type="button" class="btn btn-secondary" [routerLink]="['']">Cancelar</button>
