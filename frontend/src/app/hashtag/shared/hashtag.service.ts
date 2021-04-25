@@ -25,7 +25,7 @@ export class HashtagService {
     };
 
     if (hashtag.id) {
-      return this.http.put<Hashtag>(`${environment.api}//${hashtag.id}`, hashtagBody);
+      return this.http.put<Hashtag>(`${environment.api}/hashtag/${hashtag.id}`, hashtagBody);
     } else {
       return this.http.post<Hashtag>(`${environment.api}/hashtag`, hashtagBody);
     }
