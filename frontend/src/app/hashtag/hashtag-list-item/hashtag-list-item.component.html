@@ -1,15 +1,12 @@
-<div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" [(ngModel)]="hashtag.completed" (change)="onCompletedCheckChange(hashtag)" />
-</div>
-<div [innerHTML]="hastag.nome" class="hashtag-item-description" [ngClass]="hastag.descricao ? 'hastag-descricao' : ''">
+<div [innerHTML]="hashtag.nome" class="hashtag-item-description" [ngClass]="hashtag.descricao ? 'hashtag-descricao' : ''">
 </div>
 <div>
-    <button type="button" [routerLink]="['/edit', hastag.id]" class="btn btn-primary mr-1">
+    <button type="button" [routerLink]="['/edit', hashtag.id]" class="btn btn-primary mr-1">
         Alterar
     </button>
 </div>
 <div>
-    <button type="button" class="btn btn-danger" (click)="remove(hastag)">
+    <button type="button" class="btn btn-danger" (click)="remove(hashtag)">
         Excluir
     </button>
 </div>
