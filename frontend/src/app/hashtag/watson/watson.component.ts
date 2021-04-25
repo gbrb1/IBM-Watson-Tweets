@@ -29,8 +29,8 @@ export class WatsonComponent implements OnInit {
   }
 
   onSubmit() {
-    this.hashtagService.save(this.hashtag).subscribe(hashtag => {
-      this.router.navigate(['']);
+    this.hashtagService.watson(this.hashtag).subscribe(hashtag => {
+      //to do (exibir resposta watson)
     });
   }
 }

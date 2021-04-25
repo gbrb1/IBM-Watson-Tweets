@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Hashtag, ListHashtags, ListTweets } from './hashtag';
+import { Hashtag, ListHashtags, ListTweets, WatsonObject } from './hashtag';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -38,7 +38,11 @@ export class HashtagService {
    tweets(hashtag: Hashtag) {
 
     return this.http.get<ListTweets>(`${environment.api}/Twitter/tweets/${hashtag.nome}`);
+  }
+  
+  watson(hashtag: Hashtag) {
 
+    return this.http.get<WatsonObject>(`${environment.api}/Watson/Analise/${hashtag.nome}`);
   }
 
 }
