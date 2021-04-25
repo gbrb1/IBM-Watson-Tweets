@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Hashtag } from './hashtag';
+import { Hashtag, ListHashtags } from './hashtag';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,11 +11,11 @@ export class HashtagService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<Hashtag[]>(`${environment.api}/hashtags`);
+    return this.http.get<ListHashtags>(`${environment.api}/hashtag`);
   }
 
   getById(id: string) {
-    return this.http.get<Hashtag>(`${environment.api}/hashtags/${id}`);
+    return this.http.get<Hashtag>(`${environment.api}/hashtag/${id}`);
   }
 
   save(hashtag: Hashtag) {
@@ -27,11 +27,11 @@ export class HashtagService {
     if (hashtag.id) {
       return this.http.put<Hashtag>(`${environment.api}//${hashtag.id}`, hashtagBody);
     } else {
-      return this.http.post<Hashtag>(`${environment.api}/hashtags`, hashtagBody);
+      return this.http.post<Hashtag>(`${environment.api}/hashtag`, hashtagBody);
     }
   }
 
   delete(id: string) {
-    return this.http.delete(`${environment.api}/hashtags/${id}`);
+    return this.http.delete(`${environment.api}/hashtag/${id}`);
   }
 }

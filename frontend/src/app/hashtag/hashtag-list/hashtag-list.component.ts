@@ -14,7 +14,7 @@ export class HashtagListComponent implements OnInit {
 
   ngOnInit() {
     this.hashtagService.getAll().subscribe(hashtags => { 
-      this.hashtags = hashtags;
+      this.hashtags = hashtags.dados;
     });
   }
 
