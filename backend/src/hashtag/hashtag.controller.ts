@@ -37,10 +37,10 @@ export class HashtagController {
     }
   }
 
-  @Get(':hashtag')
-  async readHashtag(@Param('hashtag') hashtag: string) {
+  @Get(':id')
+  async readHashtag(@Param('id') id: string) {
     try {
-      const response = await this.hashtagService.read(hashtag)
+      const response = await this.hashtagService.read(id)
       if (!response){
         throw new NotFoundException('Hashtag não encontrada.')
       }
@@ -52,27 +52,27 @@ export class HashtagController {
     }
   }
 
-  @Put(':hashtag')
+  @Put(':id')
   async updateHashtag(
-    @Param('hashtag') hashtag: string,
+    @Param('id') id: string,
     @Body() data: HashtagDTO,
   ) {
     try {
-      await this.hashtagService.update(hashtag, data);
+      await this.hashtagService.update(id, data);
       return { mensagem: 'Hashtag editada com sucesso!' };
     } catch (e) {
       return e;
     }
   }
 
-  @Delete(':hashtag')
-  async destroyHashtag(@Param('hashtag') hashtag: string) {
+  @Delete(':id')
+  async destroyHashtag(@Param('id') id: string) {
     try {
-      const getHashtag = await this.hashtagService.read(hashtag)
+      const getHashtag = await this.hashtagService.read(id)
       if(!getHashtag){
         throw new NotFoundException('Hashtag não encontrada.')
       }
-      await this.hashtagService.destroy(hashtag);
+      await this.hashtagService.destroy(id);
       return {mensagem:'sucesso ao deletar hashtag'}
     } catch (e) {
       return e;
