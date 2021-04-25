@@ -46,11 +46,8 @@ export class WatsonController {
      .analyze({
        html: texto.join(),
        features: {
-         concepts: {},
          keywords: {},
-         sentiment: {},
-         entities: {},
-         categories: {}
+         sentiment: {}
        },
      })
         .then((res) => {
