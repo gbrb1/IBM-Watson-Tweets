@@ -5,16 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
-import { TaskListItemComponent } from './tasks/task-list-item/task-list-item.component';
-import { TaskFormComponent } from './tasks/task-form/task-form.component';
+import { HashtagListComponent } from './hashtag/hashtag-list/hashtag-list.component';
+import { HashtagListItemComponent} from './hashtag/hashtag-list-item/hashtag-list-item.component';
+import { HashtagFormComponent } from './hashtag/hashtag-form/hashtag-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskListComponent,
-    TaskListItemComponent,
-    TaskFormComponent
+    HashtagListComponent,
+    HashtagListItemComponent,
+    HashtagFormComponent
   ],
   imports: [
     BrowserModule,

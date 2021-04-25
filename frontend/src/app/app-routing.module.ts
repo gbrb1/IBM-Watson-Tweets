@@ -1,13 +1,13 @@
-import { TaskFormComponent } from './tasks/task-form/task-form.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { HashtagFormComponent } from './hashtag/hashtag-form/hashtag-form.component';
+import { HashtagListComponent } from './hashtag/hashtag-list/hashtag-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', component: TaskListComponent },
-  { path: 'new', component: TaskFormComponent },
-  { path: 'edit/:id', component: TaskFormComponent }
+  { path: '', component: HashtagListComponent },
+  { path: 'new', component: HashtagFormComponent },
+  { path: 'edit/:id', component:HashtagFormComponent }
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
-.task-completed {
+.hashtag-completed {
     text-decoration: line-through;
 }
 
-.task-item-description {
+.hashtag-item-description {
     flex-grow: 1;
     white-space: pre-line;
 }

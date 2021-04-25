@@ -2,10 +2,10 @@
 <hr />
 
 <section id="form">
-    <form (ngSubmit)="onSubmit()" #formTask="ngForm">
+    <form (ngSubmit)="onSubmit()" #formHashtag="ngForm">
         <div class="form-group">
             <label>Descrição</label>
-            <textarea [(ngModel)]="task.description" name="description" rows="5" class="form-control"></textarea>
+            <textarea [(ngModel)]="hastag.nome" name="Nome" rows="5" class="form-control"></textarea>
         </div>
         <button type="submit" class="btn btn-primary mr-2">Salvar</button>
         <button type="button" class="btn btn-secondary" [routerLink]="['']">Cancelar</button>
