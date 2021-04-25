@@ -1,6 +1,6 @@
 import { HashtagService } from '../shared/hashtag.service';
 import { Component, OnInit } from '@angular/core';
-import { Hashtag } from '../shared/hashtag';
+import { Hashtag, WatsonObject } from '../shared/hashtag';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,8 @@ export class WatsonComponent implements OnInit {
   hashtag: Hashtag = new Hashtag();
   title: string = 'Análise Watson';
   
+  responseWatson = new WatsonObject
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -19,6 +21,7 @@ export class WatsonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.responseWatson = null
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.hashtagService.getById(id).subscribe(hashtag => {
@@ -29,8 +32,8 @@ export class WatsonComponent implements OnInit {
   }
 
   onSubmit() {
-    this.hashtagService.watson(this.hashtag).subscribe(hashtag => {
-      //to do (exibir resposta watson)
+    this.hashtagService.watson(this.hashtag).subscribe(responseWatson => {
+     this.responseWatson = responseWatson
     });
   }
 }
