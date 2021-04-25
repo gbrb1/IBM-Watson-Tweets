@@ -7,7 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HashtagListComponent },
   { path: 'new', component: HashtagFormComponent },
-  { path: 'edit/:id', component:HashtagFormComponent }
+  { path: 'edit/:id', component:HashtagFormComponent },
+  { path: 'watson/:hashtag', component:HashtagFormComponent }
 ];
 
 @NgModule({

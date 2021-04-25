@@ -27,4 +27,11 @@ export class HashtagListComponent implements OnInit {
       this.hashtags.splice(index, 1);
     }
   }
+
+  onHashtagTwitter(hashtag: Hashtag) {
+    if (hashtag) {
+    //to do (indicar que o serviço hashtagtwitter foi chamado)
+    }
+  }
+
 }

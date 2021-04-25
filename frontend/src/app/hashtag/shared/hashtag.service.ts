@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Hashtag, ListHashtags } from './hashtag';
+import { Hashtag, ListHashtags, ListTweets } from './hashtag';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -34,4 +34,11 @@ export class HashtagService {
   delete(id: string) {
     return this.http.delete(`${environment.api}/hashtag/${id}`);
   }
+  
+   tweets(hashtag: Hashtag) {
+
+    return this.http.get<ListTweets>(`${environment.api}/Twitter/tweets/${hashtag.nome}`);
+
+  }
+
 }

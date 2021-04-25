@@ -13,6 +13,7 @@ export class HashtagListItemComponent implements OnInit {
 
   @Output()
   onDeleteHashtag = new EventEmitter()
+  onHashtagTwitter = new EventEmitter()
   
   constructor(private hashtagService: HashtagService) { }
 
@@ -22,6 +23,12 @@ export class HashtagListItemComponent implements OnInit {
   remove(hashtag: Hashtag) {
     this.hashtagService.delete(hashtag.id).subscribe(() => {
       this.onDeleteHashtag.emit(hashtag);
+    });
+  }
+
+  tweets(hashtag: Hashtag) {
+    this.hashtagService.tweets(hashtag).subscribe(() => {
+      this.onHashtagTwitter.emit(hashtag);
     });
   }
 

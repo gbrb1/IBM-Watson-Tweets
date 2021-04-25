@@ -6,6 +6,12 @@ export class Hashtag {
 }
 
 export class ListHashtags{
-    dados:Hashtag[];
-    total:number;
+    dados: Hashtag[];
+    total: number;
+}
+
+export class ListTweets {
+    dados: any[];
+    total: number;
+
 }
