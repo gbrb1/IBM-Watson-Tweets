@@ -1,0 +1,14 @@
+<h2>{{ title }}</h2>
+<hr />
+
+<section id="form">
+    <form (ngSubmit)="onSubmit()" #formHashtag="ngForm">
+        <div class="form-group">
+            <label>Hashtag</label>
+            <div [innerHTML]="hashtag.nome" class="hashtag-item-description" [ngClass]="hashtag.descricao ? 'hashtag-descricao' : ''">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Analisar</button>
+        <button type="button" class="btn btn-secondary" [routerLink]="['']">Voltar</button>
+    </form>
+</section>

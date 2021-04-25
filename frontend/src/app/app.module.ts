@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HashtagListComponent } from './hashtag/hashtag-list/hashtag-list.component';
 import { HashtagListItemComponent} from './hashtag/hashtag-list-item/hashtag-list-item.component';
 import { HashtagFormComponent } from './hashtag/hashtag-form/hashtag-form.component';
+import { WatsonComponent } from './hashtag/watson/watson.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HashtagListComponent,
     HashtagListItemComponent,
-    HashtagFormComponent
+    HashtagFormComponent,
+    WatsonComponent
   ],
   imports: [
     BrowserModule,

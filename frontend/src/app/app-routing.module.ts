@@ -2,13 +2,14 @@ import { HashtagFormComponent } from './hashtag/hashtag-form/hashtag-form.compon
 import { HashtagListComponent } from './hashtag/hashtag-list/hashtag-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WatsonComponent } from './hashtag/watson/watson.component';
 
 
 const routes: Routes = [
   { path: '', component: HashtagListComponent },
   { path: 'new', component: HashtagFormComponent },
   { path: 'edit/:id', component:HashtagFormComponent },
-  { path: 'watson/:hashtag', component:HashtagFormComponent }
+  { path: 'watson/:id', component:WatsonComponent }
 ];
 
 @NgModule({
