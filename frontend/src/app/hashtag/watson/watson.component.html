@@ -12,6 +12,9 @@
                 <p>Linguagem do texto: {{responseWatson.language}}</p>
                 <p>Quantidade de caracteres analisados: {{responseWatson.usage.text_characters}}</p>
                 <p>Features utilizadas pelo Watson: {{responseWatson.usage.features}}</p>
+                <p>Sentimento predominante determinado pelo watson: {{responseWatson.sentiment.document.label}}. Pontuação: {{responseWatson.sentiment.document.score}}</p>
+                <p>Palavra-chave com maior relevância: {{keyword.text}}</p>
+    
             </div>
         <button type="submit" class="btn btn-primary mr-2">Analisar</button>
         <button type="button" class="btn btn-secondary" [routerLink]="['']">Voltar</button>

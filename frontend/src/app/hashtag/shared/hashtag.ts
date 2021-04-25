@@ -23,10 +23,33 @@ export class Usage {
     features: number;
 }
 
+export class Document {
+    score: number;
+    label: string;
+}
+
+export class Sentiment {
+    document: Document;
+}
+
 export class Keyword {
     text: string;
     relevance: number;
     count: number;
+}
+
+export class Disambiguation {
+    subtype: string[];
+    name: string;
+    dbpedia_resource: string;
+}
+
+export class Entity {
+    type: string;
+    text: string;
+    relevance: number;
+    count: number;
+    disambiguation: Disambiguation;
 }
 
 export class Concept {
@@ -35,13 +58,18 @@ export class Concept {
     dbpedia_resource: string;
 }
 
-export class WatsonObject {
-    usage: Usage;
-    language: string;
-    keywords: Keyword[];
-    concepts: Concept[];
+export class Category {
+    score: number;
+    label: string;
 }
 
+export class WatsonObject {
+    usage: Usage;
+    sentiment: Sentiment;
+    language: string;
+    keywords: Keyword[];
+   
+}
 
 
 
