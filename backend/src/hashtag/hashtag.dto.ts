@@ -3,7 +3,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
-export class HashtagDTO {
+export class HashtagDTO { //dto é para a entrada de dados
   @ApiProperty()
   @IsString()
   nome: string;

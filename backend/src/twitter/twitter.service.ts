@@ -7,6 +7,7 @@ import { TweetEntity } from './twitter.entity';
 export class TwitterService {
   constructor(
     @InjectRepository(TweetEntity)
+    //Instanciando o repositório de tweets que é igual a tabela do banco (TweetEntity)
     private tweetRespository: Repository<TweetEntity>,
   ) {}
   //Função para salvar tweets no banco
@@ -28,9 +29,10 @@ export class TwitterService {
     );
   }
  
- 
+  //Função pra pegar um array de tweets onde o nome da hashtag == hashtag passada como parametro
   async getTweets(hashtag: string): Promise <TweetEntity[]> {
-   return await this.tweetRespository.find({ where: { hashtag: hashtag } })
+   //retornando registros encontrados
+    return await this.tweetRespository.find({ where: { hashtag: hashtag } })
   }
 
 

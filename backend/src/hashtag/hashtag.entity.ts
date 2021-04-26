@@ -6,9 +6,9 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-//Tabela no banco de dados
+//mapeando tabela no banco de dados
 @Entity('hashtag')
-export class HashtagEntity {
+export class HashtagEntity { 
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

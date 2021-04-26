@@ -19,28 +19,28 @@ export class HashtagController {
   constructor(private hashtagService: HashtagService) {}
 
   @Get()
-  async ShowAllHashtags() {
+  async ShowAllHashtags() { //Pegando todas as hashtags cadastradas
     try {
       return await this.hashtagService.ShowAll();
     } catch (e) {
       return e;
     }
   }
-
+  //Cadastrando hashtag
   @Post()
   async createHashtag(@Body() data: HashtagDTO) {
     try {
-      await this.hashtagService.create(data);
+      await this.hashtagService.create(data); //chamando a função no service para fazer a operação no BD
       return { mensagem: 'Hashtag cadastrada com sucesso!' };
     } catch (e) {
       return e;
     }
   }
-
+  //buscando hashtag específica por um id
   @Get(':id')
   async readHashtag(@Param('id') id: string) {
     try {
-      const response = await this.hashtagService.read(id)
+      const response = await this.hashtagService.read(id) //chamando a função no service para fazer a operação de busca no BD
       if (!response){
         throw new NotFoundException('Hashtag não encontrada.')
       }
@@ -51,20 +51,20 @@ export class HashtagController {
       return e;
     }
   }
-
+  //editando (update) hashtag (buscando por id)
   @Put(':id')
   async updateHashtag(
     @Param('id') id: string,
     @Body() data: HashtagDTO,
   ) {
     try {
-      await this.hashtagService.update(id, data);
+      await this.hashtagService.update(id, data); //chamando a função no service para fazer a operação no BD
       return { mensagem: 'Hashtag editada com sucesso!' };
     } catch (e) {
       return e;
     }
   }
-
+  //deletando hashtag (buscando por id)
   @Delete(':id')
   async destroyHashtag(@Param('id') id: string) {
     try {
@@ -72,7 +72,7 @@ export class HashtagController {
       if(!getHashtag){
         throw new NotFoundException('Hashtag não encontrada.')
       }
-      await this.hashtagService.destroy(id);
+      await this.hashtagService.destroy(id); //chamando a função no service para fazer a operação no BD
       return {mensagem:'sucesso ao deletar hashtag'}
     } catch (e) {
       return e;
