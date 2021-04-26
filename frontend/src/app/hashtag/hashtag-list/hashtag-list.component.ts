@@ -13,18 +13,18 @@ export class HashtagListComponent implements OnInit {
   constructor(private hashtagService: HashtagService) { }
 
   ngOnInit() {
-    this.hashtagService.getAll().subscribe(hashtags => { 
+    this.hashtagService.getAll().subscribe(hashtags => { //batendo na API e pegando as hashtags cadastradas no banco
       this.hashtags = hashtags.dados;
 
-      console.log(hashtags.dados)
+      console.log(hashtags.dados) //debugando
 
     });
   }
 
-  onHashtagDeleted(hashtag: Hashtag) {
+  onHashtagDeleted(hashtag: Hashtag) { //evento que é disparado na exclusão
     if (hashtag) {
-      const index = this.hashtags.findIndex((hashtagItem) => hashtagItem.id == hashtag.id);
-      this.hashtags.splice(index, 1);
+      const index = this.hashtags.findIndex((hashtagItem) => hashtagItem.id == hashtag.id); //procurando o indice da hashtag no array
+      this.hashtags.splice(index, 1); //sobrescreve 1 elemento a partir do selecionado
     }
   }
 

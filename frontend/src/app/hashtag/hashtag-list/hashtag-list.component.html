@@ -10,8 +10,8 @@
         Nenhuma Hashtag foi cadastrada ainda.
     </div>
 
-    <ul class="list-group" *ngIf="hashtags.length > 0" >
-        <li class="list-group-item" *ngFor="let hashtag of hashtags">
+    <ul class="list-group" *ngIf="hashtags.length > 0" >            
+        <li class="list-group-item" *ngFor="let hashtag of hashtags">       <!--(onDeleteHashtag) deleta da lista em tempo real-->
             <app-hashtag-list-item [hashtag]="hashtag" class="hashtag-item" (onDeleteHashtag)="onHashtagDeleted($event)"></app-hashtag-list-item>
         </li>
     </ul>

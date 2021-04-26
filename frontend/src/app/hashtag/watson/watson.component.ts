@@ -23,17 +23,16 @@ export class WatsonComponent implements OnInit {
   ngOnInit() {
     this.responseWatson = null
     this.keyword = null
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id'); //pegar o id do elemento que eu cliquei na lista
     if (id) {
-      this.hashtagService.getById(id).subscribe(hashtag => {
+      this.hashtagService.getById(id).subscribe(hashtag => { //se encontrar o id, chamada para pegar a hashtag na API
         this.hashtag = hashtag;
-        this.title = 'Análise Watson';
       });
     }
   }
 
-  onSubmit() {
-    this.hashtagService.watson(this.hashtag).subscribe(responseWatson => {
+  onSubmit() { //botão de salvar
+    this.hashtagService.watson(this.hashtag).subscribe(responseWatson => { //chamada na API pro serviço do watson no backend
      this.responseWatson = responseWatson
 
      let maiorKeyword = 0 

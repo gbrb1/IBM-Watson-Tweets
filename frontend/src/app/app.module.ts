@@ -11,7 +11,7 @@ import { HashtagFormComponent } from './hashtag/hashtag-form/hashtag-form.compon
 import { WatsonComponent } from './hashtag/watson/watson.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HashtagListComponent,
     HashtagListItemComponent,

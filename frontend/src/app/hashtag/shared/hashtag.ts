@@ -1,4 +1,4 @@
-export class Hashtag {
+export class Hashtag { //todas as interfaces do projeto
     id: string;
     nome: string;
     descricao: string;

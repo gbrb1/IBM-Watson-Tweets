@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WatsonComponent } from './hashtag/watson/watson.component';
 
 
-const routes: Routes = [
+const routes: Routes = [ //mapeando as rotas
   { path: '', component: HashtagListComponent },
   { path: 'new', component: HashtagFormComponent },
   { path: 'edit/:id', component:HashtagFormComponent },
