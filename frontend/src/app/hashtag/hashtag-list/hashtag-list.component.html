@@ -1,0 +1,18 @@
+<h2>Hashtags</h2>
+<hr />
+
+<button type="button" class="btn btn-primary mb-2" [routerLink]="['/new']">
+    Nova Hashtag
+</button>
+
+<section>
+    <div *ngIf="hashtags.length == 0" class="alert alert-warning" role="alert">
+        Nenhuma Hashtag foi cadastrada ainda.
+    </div>
+
+    <ul class="list-group" *ngIf="hashtags.length > 0" >
+        <li class="list-group-item" *ngFor="let hashtag of hashtags">
+            <app-hashtag-list-item [hashtag]="hashtag" class="hashtag-item" (onDeleteHashtag)="onHashtagDeleted($event)"></app-hashtag-list-item>
+        </li>
+    </ul>
+</section>

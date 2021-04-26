@@ -29,16 +29,16 @@ export class HashtagService {
     return hashtag;
   }
 
-  async read(hashtag: string) {
-    return await this.hashtagRepository.findOne({ where: { nome: hashtag } });
+  async read(id: string) {
+    return await this.hashtagRepository.findOne({ where: { id: id } });
   }
 
-  async update(hashtag: string, data: Partial<HashtagDTO>) {
-    await this.hashtagRepository.update({ nome: hashtag }, data);
-    return await this.hashtagRepository.findOne({ nome: hashtag });
+  async update(id: string, data: Partial<HashtagDTO>) {
+    await this.hashtagRepository.update({ id: id }, data);
+    return await this.hashtagRepository.findOne({ id: id });
   }
 
-  async destroy(hashtag: string) {
-    return await this.hashtagRepository.delete({ nome: hashtag });
+  async destroy(id: string) {
+    return await this.hashtagRepository.delete({ id: id });
   }
 }

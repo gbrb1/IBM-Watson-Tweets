@@ -41,15 +41,15 @@ export class WatsonController {
      const texto = tweets.map(tweet =>{
        return tweet.text;
      })
-
-      assistant
-        .analyze({
-          html: texto.join(),
-          features: {
-            concepts: {},
-            keywords: {},
-          },
-        })
+     
+     assistant
+     .analyze({
+       html: texto.join(),
+       features: {
+         keywords: {},
+         sentiment: {}
+       },
+     })
         .then((res) => {
           response.json(res.result);
         })

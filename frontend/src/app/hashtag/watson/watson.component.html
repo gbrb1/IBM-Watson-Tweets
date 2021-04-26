@@ -1,0 +1,22 @@
+<h2>{{ title }}</h2>
+<hr />
+
+<section id="form">
+    <form (ngSubmit)="onSubmit()" #formHashtag="ngForm">
+        <div class="form-group">
+            <label>Hashtag</label>
+            <div [innerHTML]="hashtag.nome" class="hashtag-item-description" [ngClass]="hashtag.descricao ? 'hashtag-descricao' : ''">
+            </div>
+        </div>
+            <div *ngIf="responseWatson" class="table table-sm">
+                <p>Linguagem do texto: {{responseWatson.language}}</p>
+                <p>Quantidade de caracteres analisados: {{responseWatson.usage.text_characters}}</p>
+                <p>Features utilizadas pelo Watson: {{responseWatson.usage.features}}</p>
+                <p>Sentimento predominante determinado pelo watson: {{responseWatson.sentiment.document.label}}. Pontuação: {{responseWatson.sentiment.document.score}}</p>
+                <p>Palavra-chave com maior relevância: {{keyword.text}}</p>
+    
+            </div>
+        <button type="submit" class="btn btn-primary mr-2">Analisar</button>
+        <button type="button" class="btn btn-secondary" [routerLink]="['']">Voltar</button>
+    </form>
+</section>
