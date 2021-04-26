@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Alert } from 'selenium-webdriver';
 import { Hashtag } from '../shared/hashtag';
 import { HashtagService } from '../shared/hashtag.service';
 
@@ -13,7 +14,6 @@ export class HashtagListItemComponent implements OnInit {
 
   @Output()
   onDeleteHashtag = new EventEmitter()
-  onHashtagTwitter = new EventEmitter()
   
   constructor(private hashtagService: HashtagService) { }
 
@@ -28,13 +28,8 @@ export class HashtagListItemComponent implements OnInit {
 
   tweets(hashtag: Hashtag) {
     this.hashtagService.tweets(hashtag).subscribe(() => {
-      this.onHashtagTwitter.emit(hashtag);
+      alert("Sucesso ao pegar Tweets");
     });
   }
 
-  onCompletedCheckChange(hashtag: Hashtag) {
-    this.hashtagService.save(hashtag).subscribe(hashtag => {
-      console.log(hashtag);
-    });
-  }
 }

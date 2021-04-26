@@ -28,10 +28,4 @@ export class HashtagListComponent implements OnInit {
     }
   }
 
-  onHashtagTwitter(hashtag: Hashtag) {
-    if (hashtag) {
-    //to do (indicar que o serviço hashtagtwitter foi chamado)
-    }
-  }
-
 }

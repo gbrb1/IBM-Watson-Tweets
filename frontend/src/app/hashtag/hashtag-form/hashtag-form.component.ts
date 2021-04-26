@@ -30,7 +30,9 @@ export class HashtagFormComponent implements OnInit {
 
   onSubmit() {
     this.hashtagService.save(this.hashtag).subscribe(hashtag => {
-      console.log(hashtag);
+      if(hashtag){
+        alert("Sucesso")
+      }
       this.router.navigate(['']);
     });
   }
