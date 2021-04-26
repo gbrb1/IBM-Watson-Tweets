@@ -1,0 +1,27 @@
+<div [innerHTML]="hashtag.nome" class="hashtag-item-description" [ngClass]="hashtag.descricao ? 'hashtag-descricao' : ''">
+</div>
+
+<div>
+    <button type="button"  class="btn btn-primary mr-1" (click)="tweets(hashtag)">
+        Capturar Tweets
+    </button>
+</div>
+
+<div>
+    <button type="button" [routerLink]="['/watson', hashtag.id]" class="btn btn-primary mr-1">
+        Analisar com o Watson
+    </button>
+</div>
+
+<div>
+    <button type="button" [routerLink]="['/edit', hashtag.id]" class="btn btn-primary mr-1">
+        Alterar
+    </button>
+</div>
+
+<div>
+    <button type="button" class="btn btn-danger" (click)="remove(hashtag)">
+        Excluir
+    </button>
+</div>
+

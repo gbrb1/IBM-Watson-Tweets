@@ -1,0 +1,8 @@
+.hashtag-completed {
+    text-decoration: line-through;
+}
+
+.hashtag-item-description {
+    flex-grow: 1;
+    white-space: pre-line;
+}
