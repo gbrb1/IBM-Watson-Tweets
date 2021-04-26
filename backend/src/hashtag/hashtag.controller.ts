@@ -11,7 +11,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { HashtagService } from './hashtag.service';
 import { HashtagDTO } from './hashtag.dto';
-import { response } from 'express';
+
 
 @Controller('Hashtag')
 @ApiTags('Hashtag')

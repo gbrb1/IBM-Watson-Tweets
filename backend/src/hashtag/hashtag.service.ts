@@ -18,7 +18,7 @@ export class HashtagService {
   }
 
   async create(data: HashtagDTO) {
-    //const hashtag = await this.hashtagRepository.create(data);
+    
 
     const hashtag = new HashtagEntity({
       nome: data.nome,

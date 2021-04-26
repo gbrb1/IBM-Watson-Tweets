@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-//Tabela no banco de dados
 @Entity('hashtag')
 export class HashtagEntity {
   @PrimaryGeneratedColumn('uuid')

@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-//Tabela no banco de dados
+
 @Entity('tweet')
 export class TweetEntity {
   @PrimaryGeneratedColumn('uuid')
